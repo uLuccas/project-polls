@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+//   server: {
+//     port: 8080,
+//   },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

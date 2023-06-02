@@ -16,6 +16,6 @@ RUN npx prisma generate
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3080
 
 CMD npx prisma db push; npm run dev

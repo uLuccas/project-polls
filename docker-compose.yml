@@ -1,15 +1,15 @@
 version: '3'
 
 networks:
-  cu:
+  net:
     driver: bridge
 services:
   db:
     image: postgres
     container_name: pollsdb
-    restart: always
+    # restart: always
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin1343
@@ -27,19 +27,41 @@ services:
   api:
     container_name: polls-api
     build:
-        context: "./"
+        context: "./polls-backend/"
         dockerfile: Dockerfile
     environment:
       POSTGRES_USER: postgres
     ports:
-      - 3000:3000
+      - "3080:3080"
     volumes:
-      - .:/app
+      - ./polls-backend:/app
     depends_on:
        db: 
         condition: service_healthy
     links:
       - db
+
+  frontend:
+    build:
+      context: "./polls-front"
+      dockerfile: Dockerfile
+      target: runner
+    container_name: polls-front
+    command: npm run dev
+
+    environment:
+      NODE_ENV: development
+
+    volumes:
+        - ./polls-front:/app
+
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    links:
+      - api
+
 volumes:
   pgdata:
     driver: local

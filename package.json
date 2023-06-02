@@ -1,0 +1,22 @@
+{
+  "name": "polls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker-update-conteiner": "docker-compose pull && docker-compose up -d",
+    "prod": "docker-compose down && docker-compose up --build -d",
+    "seed": "ts-node /polls-backend/prisma/seed.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uLuccas/project-polls.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uLuccas/project-polls/issues"
+  },
+  "homepage": "https://github.com/uLuccas/project-polls#readme"
+}
