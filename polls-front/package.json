@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "front-dev": "next dev -p 3001"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/next-js": "^2.1.4",
     "@chakra-ui/react": "^2.7.0",
     "@emotion/react": "^11.11.0",
