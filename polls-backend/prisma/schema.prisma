@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model polls{
+  id  Int @id @default(autoincrement())
+  title String
+  content String?
+  option1 String
+  option2 String?
+  option3 String?
+  votes_option1 Int
+  votes_option2 Int
+  votes_option3 Int
+  created_at DateTime 
+  updated_at DateTime @default(now())
+}

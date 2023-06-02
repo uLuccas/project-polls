@@ -1,0 +1,37 @@
+/polls-backend/node_modules
+
+/polls-backend/.env
+
+# dependencies
+/polls-front/node_modules
+/polls-front/.pnp
+/polls-front/.pnp.js
+
+/polls-front/coverage
+
+# next.js
+/polls-front/.next/
+/polls-front/out/
+
+# production
+/polls-front/build
+
+# misc
+/polls-front/.DS_Store
+/polls-front/*.pem
+
+# debug
+/polls-front/npm-debug.log*
+/polls-front/yarn-debug.log*
+/polls-front/yarn-error.log*
+
+# local env files
+/polls-front/.env*.local
+
+# vercel
+/polls-front/.vercel
+
+# typescript
+/polls-front/*.tsbuildinfo
+/polls-front/next-env.d.ts
+

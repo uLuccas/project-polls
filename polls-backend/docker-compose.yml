@@ -1,0 +1,45 @@
+version: '3'
+
+networks:
+  cu:
+    driver: bridge
+services:
+  db:
+    image: postgres
+    container_name: pollsdb
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin1343
+      POSTGRES_DB: pollsdb
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+    volumes:
+      - pgdata:/data/postgres
+      
+  api:
+    container_name: polls-api
+    build:
+        context: "./"
+        dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: postgres
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    depends_on:
+       db: 
+        condition: service_healthy
+    links:
+      - db
+volumes:
+  pgdata:
+    driver: local
