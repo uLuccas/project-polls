@@ -2,7 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const getAllPolls = async (req, res) => {
-  const result = await prisma.polls.findMany();
+  const result = await prisma.polls.findMany({ orderBy: { id: "desc" } });
   return res.json(result);
 };
 
@@ -89,11 +89,10 @@ const deletePoll = async (req, res) => {
   return res.status(200).json(response);
 };
 
-
 module.exports = {
   getAllPolls,
   createPoll,
   updateVotesPoll,
   updatePoll,
-  deletePoll
+  deletePoll,
 };
