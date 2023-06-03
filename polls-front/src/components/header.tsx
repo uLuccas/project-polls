@@ -68,41 +68,6 @@ export default function Header() {
           <Text>Nova enquete</Text>
         </Link>
       </Button>
-
-      {/* <Menu>
-        <MenuButton
-          // onClick={onToggle}
-          as={IconButton}
-          aria-label="Options"
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          variant="outline"
-        />
-        <MenuList bg={"#1A202C"}>
-          <MenuItem bg={"#1A202C"} icon={<FiHome />}>
-            Home
-          </MenuItem>
-          <MenuItem bg={"#1A202C"} zIndex={0} icon={<AddIcon />}>
-            <Button
-              fontSize={"sm"}
-              fontWeight={400}
-              variant={"link"}
-              p={7}
-              borderRadius={"10"}
-              h={5}
-              bg={"#1959f954"}
-            >
-              <AddIcon mr={2} />
-              <Link
-                href="/createPoll"
-                color="blue.400"
-                _hover={{ color: "blue.500" }}
-              >
-                Nova enquete
-              </Link>
-            </Button>
-          </MenuItem>
-        </MenuList>
-      </Menu> */}
     </Flex>
   );
 }

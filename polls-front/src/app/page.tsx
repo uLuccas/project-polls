@@ -1,9 +1,15 @@
 "use client";
 import CardPoll from "@/components/cardPoll";
-import { Flex, Stack } from "@chakra-ui/react";
+import { Flex, Stack, Spinner, Text, useToast } from "@chakra-ui/react";
 import axiosInstance from "../api/axios";
+import { FaRegSurprise } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useData } from "../context/dataContext";
+import {
+  toastSuccessGet,
+  toastSuccessGetNoPoll,
+  toastWarningGet,
+} from "@/utils/toast.config";
 
 export interface IPoll {
   id: Number;
@@ -21,16 +27,30 @@ export interface IPoll {
 }
 
 export default function Home() {
+  const toast = useToast();
   const { data, setData } = useData();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function getPolls() {
+    setIsLoading(true);
     try {
       const result = await axiosInstance.get("/");
       setData(result.data);
-      console.log(result.data);
+
+      if (result.data.length > 0) {
+        toast(toastSuccessGet);
+      } else {
+        toast(toastSuccessGetNoPoll);
+      }
       return;
     } catch (error) {
+      toast({
+        ...toastWarningGet,
+        description: `${error}`,
+      });
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
   useEffect(() => {
@@ -47,8 +67,33 @@ export default function Home() {
       alignItems={"center"}
       pt={10}
     >
-      {data &&
-        data.map((item) => <CardPoll key={String(item.id)} dataProps={item} />)}
+      {isLoading ? (
+        <Flex
+          h={"calc(100vh - 100px)"}
+          flexDir={"column"}
+          justifyContent={"center"}
+        >
+          <Spinner color="red.500" thickness="4px" size={"xl"} />
+        </Flex>
+      ) : data ? (
+        data.map((item) => <CardPoll key={String(item.id)} dataProps={item} />)
+      ) : (
+        <Flex
+          h={"200px"}
+          w={"300px"}
+          bg={"gray.600"}
+          flexDir={"column"}
+          alignItems={"center"}
+          justifyContent={"space-around"}
+          borderRadius={15}
+          py={5}
+          px={10}
+        >
+          <Text>Oh não!</Text>
+          <FaRegSurprise size={50} color="#000" />
+          <Text>Estamos sem enquete.</Text>
+        </Flex>
+      )}
     </Stack>
   );
 }
