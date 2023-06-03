@@ -73,7 +73,7 @@ export default function Home() {
           flexDir={"column"}
           justifyContent={"center"}
         >
-          <Spinner color="red.500" thickness="4px" size={"xl"} />
+          <Spinner color="blue.400" thickness="4px" size={"xl"} />
         </Flex>
       ) : data ? (
         data.map((item) => <CardPoll key={String(item.id)} dataProps={item} />)
