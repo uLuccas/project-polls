@@ -41,8 +41,7 @@ export default function CardPoll({ dataProps }: IDataProps) {
     handleSubmit,
     register,
     getValues,
-    reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm();
 
   async function updatePoll(dataUp: any) {
@@ -109,7 +108,7 @@ export default function CardPoll({ dataProps }: IDataProps) {
                   variant="flushed"
                   placeholder="Título"
                   w={"70%"}
-                  id="firstName"
+                  id="title"
                   {...register("title", {
                     required: "Campo obrigatório!",
                   })}
