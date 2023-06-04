@@ -25,14 +25,12 @@ import {
   FormControl,
   useToast,
   Spinner,
-  Progress,
 } from "@chakra-ui/react";
 import axiosInstance from "../api/axios";
 import { useEffect, useState } from "react";
 import { useData } from "@/context/dataContext";
 import {
   toastSuccessDeletePoll,
-  toastSuccessGet,
   toastSuccessUpdatePoll,
   toastSuccessVotesPoll,
   toastWarningGeneric,
@@ -274,14 +272,6 @@ export default function CardPoll({ dataProps }: IDataProps) {
                     py={1}
                     w="40%"
                   >
-                    {/* <Progress
-                      
-                      hasStripe 
-                      
-                      // label={`${option1Percentage}%`}
-                      borderRadius={"10px"}
-                      value={option1Percentage}
-                    /> */}
                     <ProgressBarCustom value={option1Percentage} />
                     {dataProps.option2 && (
                       <ProgressBarCustom value={option2Percentage} />
