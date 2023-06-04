@@ -1,34 +1,10 @@
 "use-client";
 
-import {
-  AddIcon,
-  CloseIcon,
-  EditIcon,
-  ExternalLinkIcon,
-  HamburgerIcon,
-  Icon,
-  RepeatIcon,
-} from "@chakra-ui/icons";
+import { AddIcon } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/next-js";
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  IconButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
-
-import { FiHome } from "react-icons/fi";
+import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 
 export default function Header() {
-  const { isOpen, onToggle } = useDisclosure();
-
   return (
     <Flex
       align={"center"}
@@ -65,7 +41,7 @@ export default function Header() {
           _hover={{ color: "black" }}
         >
           <AddIcon mr={2} />
-          <Text>Nova enquete</Text>
+          <Text display={["none", "block", "block"]}>Nova enquete</Text>
         </Link>
       </Button>
     </Flex>
