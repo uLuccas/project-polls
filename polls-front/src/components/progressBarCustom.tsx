@@ -16,7 +16,7 @@ export default function ProgressBarCustom({ value }: IProps) {
         color="white"
         fontWeight="bold"
       >
-        {`${value.toFixed(1)}%`}
+        {Number.isNaN(value) ? "0%" : `${value.toFixed(1)}%`}
       </Text>
     </Box>
   );
