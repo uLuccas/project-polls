@@ -66,7 +66,7 @@ export default function CreateNewPoll() {
       display={"flex"}
       flexDir={"column"}
       alignItems={"center"}
-      pt={10}
+      py={10}
     >
       {isLoading ? (
         <Flex
@@ -80,7 +80,7 @@ export default function CreateNewPoll() {
         <Flex
           bg={"gray.600"}
           minH={"500px"}
-          w={"400px"}
+          w={["90%","70%","50%"]}
           flexDir={"column"}
           alignItems={"center"}
           justifyContent={"space-around"}
@@ -142,9 +142,9 @@ export default function CreateNewPoll() {
               />
             </FormControl>
 
-            <Flex w={"100%"} justifyContent={"space-around"} mt={10}>
-              <Button type="reset" variant="solid" colorScheme="blue">
-                Apagar
+            <Flex w={"100%"} flexDir={["column", "row", "row"]} justifyContent={"space-around"} mt={10}>
+              <Button type="reset" variant="solid" colorScheme="blue" mb={["5", "none","none"]}>
+                Limpar
               </Button>
               <Button
                 type="submit"

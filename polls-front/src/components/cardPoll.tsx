@@ -143,7 +143,7 @@ export default function CardPoll({ dataProps }: IDataProps) {
       direction={{ base: "column", sm: "row" }}
       overflow="hidden"
       variant="outline"
-      w={"40%"}
+      w={["95%", "70%", "45%"]}
     >
       {isLoading ? (
         <Flex
